@@ -1,0 +1,448 @@
+
+Slave2-I2C.elf:     file format elf32-avr
+
+Sections:
+Idx Name          Size      VMA       LMA       File off  Algn
+  0 .data         00000000  00800100  00800100  000002fa  2**0
+                  CONTENTS, ALLOC, LOAD, DATA
+  1 .text         00000286  00000000  00000000  00000074  2**1
+                  CONTENTS, ALLOC, LOAD, READONLY, CODE
+  2 .bss          00000006  00800100  00800100  000002fa  2**0
+                  ALLOC
+  3 .comment      00000030  00000000  00000000  000002fa  2**0
+                  CONTENTS, READONLY
+  4 .note.gnu.avr.deviceinfo 00000040  00000000  00000000  0000032c  2**2
+                  CONTENTS, READONLY
+  5 .debug_aranges 00000068  00000000  00000000  0000036c  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  6 .debug_info   00000871  00000000  00000000  000003d4  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  7 .debug_abbrev 0000070a  00000000  00000000  00000c45  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  8 .debug_line   00000444  00000000  00000000  0000134f  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  9 .debug_frame  000000e0  00000000  00000000  00001794  2**2
+                  CONTENTS, READONLY, DEBUGGING
+ 10 .debug_str    0000042d  00000000  00000000  00001874  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 11 .debug_loc    0000017d  00000000  00000000  00001ca1  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 12 .debug_ranges 00000048  00000000  00000000  00001e1e  2**0
+                  CONTENTS, READONLY, DEBUGGING
+
+Disassembly of section .text:
+
+00000000 <__vectors>:
+   0:	0c 94 34 00 	jmp	0x68	; 0x68 <__ctors_end>
+   4:	0c 94 46 00 	jmp	0x8c	; 0x8c <__bad_interrupt>
+   8:	0c 94 46 00 	jmp	0x8c	; 0x8c <__bad_interrupt>
+   c:	0c 94 46 00 	jmp	0x8c	; 0x8c <__bad_interrupt>
+  10:	0c 94 46 00 	jmp	0x8c	; 0x8c <__bad_interrupt>
+  14:	0c 94 bc 00 	jmp	0x178	; 0x178 <__vector_5>
+  18:	0c 94 46 00 	jmp	0x8c	; 0x8c <__bad_interrupt>
+  1c:	0c 94 46 00 	jmp	0x8c	; 0x8c <__bad_interrupt>
+  20:	0c 94 46 00 	jmp	0x8c	; 0x8c <__bad_interrupt>
+  24:	0c 94 46 00 	jmp	0x8c	; 0x8c <__bad_interrupt>
+  28:	0c 94 46 00 	jmp	0x8c	; 0x8c <__bad_interrupt>
+  2c:	0c 94 cb 00 	jmp	0x196	; 0x196 <__vector_11>
+  30:	0c 94 46 00 	jmp	0x8c	; 0x8c <__bad_interrupt>
+  34:	0c 94 46 00 	jmp	0x8c	; 0x8c <__bad_interrupt>
+  38:	0c 94 46 00 	jmp	0x8c	; 0x8c <__bad_interrupt>
+  3c:	0c 94 46 00 	jmp	0x8c	; 0x8c <__bad_interrupt>
+  40:	0c 94 46 00 	jmp	0x8c	; 0x8c <__bad_interrupt>
+  44:	0c 94 46 00 	jmp	0x8c	; 0x8c <__bad_interrupt>
+  48:	0c 94 46 00 	jmp	0x8c	; 0x8c <__bad_interrupt>
+  4c:	0c 94 46 00 	jmp	0x8c	; 0x8c <__bad_interrupt>
+  50:	0c 94 46 00 	jmp	0x8c	; 0x8c <__bad_interrupt>
+  54:	0c 94 46 00 	jmp	0x8c	; 0x8c <__bad_interrupt>
+  58:	0c 94 46 00 	jmp	0x8c	; 0x8c <__bad_interrupt>
+  5c:	0c 94 46 00 	jmp	0x8c	; 0x8c <__bad_interrupt>
+  60:	0c 94 55 00 	jmp	0xaa	; 0xaa <__vector_24>
+  64:	0c 94 46 00 	jmp	0x8c	; 0x8c <__bad_interrupt>
+
+00000068 <__ctors_end>:
+  68:	11 24       	eor	r1, r1
+  6a:	1f be       	out	0x3f, r1	; 63
+  6c:	cf ef       	ldi	r28, 0xFF	; 255
+  6e:	d8 e0       	ldi	r29, 0x08	; 8
+  70:	de bf       	out	0x3e, r29	; 62
+  72:	cd bf       	out	0x3d, r28	; 61
+
+00000074 <__do_clear_bss>:
+  74:	21 e0       	ldi	r18, 0x01	; 1
+  76:	a0 e0       	ldi	r26, 0x00	; 0
+  78:	b1 e0       	ldi	r27, 0x01	; 1
+  7a:	01 c0       	rjmp	.+2      	; 0x7e <.do_clear_bss_start>
+
+0000007c <.do_clear_bss_loop>:
+  7c:	1d 92       	st	X+, r1
+
+0000007e <.do_clear_bss_start>:
+  7e:	a6 30       	cpi	r26, 0x06	; 6
+  80:	b2 07       	cpc	r27, r18
+  82:	e1 f7       	brne	.-8      	; 0x7c <.do_clear_bss_loop>
+  84:	0e 94 2d 01 	call	0x25a	; 0x25a <main>
+  88:	0c 94 41 01 	jmp	0x282	; 0x282 <_exit>
+
+0000008c <__bad_interrupt>:
+  8c:	0c 94 00 00 	jmp	0	; 0x0 <__vectors>
+
+00000090 <I2C_Slave_Init>:
+/*****************/
+//Funcion para inicializar el esclavo
+/*****************/
+
+void I2C_Slave_Init(uint8_t adress){
+	DDRC &= ~((1<<DDC4)|(1<<DDC4)); //PINES DE I2C COMO ENTRADAS
+  90:	97 b1       	in	r25, 0x07	; 7
+  92:	9f 7e       	andi	r25, 0xEF	; 239
+  94:	97 b9       	out	0x07, r25	; 7
+	
+	//TWAR = address << 1 & 0b11111110;// se asigna la direccion
+	TWAR = (adress <<1| 0x01); //direccion y habilitar la llamada general
+  96:	90 e0       	ldi	r25, 0x00	; 0
+  98:	88 0f       	add	r24, r24
+  9a:	99 1f       	adc	r25, r25
+  9c:	81 60       	ori	r24, 0x01	; 1
+  9e:	80 93 ba 00 	sts	0x00BA, r24	; 0x8000ba <__TEXT_REGION_LENGTH__+0x7f80ba>
+	//se habilita la interfaz ACK automatico, se habilita la ISR
+	TWCR = (1<<TWEA)|(1<<TWEN)|(1<<TWIE);
+  a2:	85 e4       	ldi	r24, 0x45	; 69
+  a4:	80 93 bc 00 	sts	0x00BC, r24	; 0x8000bc <__TEXT_REGION_LENGTH__+0x7f80bc>
+  a8:	08 95       	ret
+
+000000aa <__vector_24>:
+// PROTOTIPOS
+void initPCint1(void);
+void initTimer1(void);
+
+// ISR de TWI (I2C)
+ISR(TWI_vect) {
+  aa:	1f 92       	push	r1
+  ac:	0f 92       	push	r0
+  ae:	0f b6       	in	r0, 0x3f	; 63
+  b0:	0f 92       	push	r0
+  b2:	11 24       	eor	r1, r1
+  b4:	8f 93       	push	r24
+  b6:	ef 93       	push	r30
+  b8:	ff 93       	push	r31
+	uint8_t estado = TWSR & 0xF8; // Lee los 3 bits superiores del registro de estado
+  ba:	80 91 b9 00 	lds	r24, 0x00B9	; 0x8000b9 <__TEXT_REGION_LENGTH__+0x7f80b9>
+  be:	88 7f       	andi	r24, 0xF8	; 248
+
+	switch (estado) {
+  c0:	80 39       	cpi	r24, 0x90	; 144
+  c2:	c9 f0       	breq	.+50     	; 0xf6 <__vector_24+0x4c>
+  c4:	38 f4       	brcc	.+14     	; 0xd4 <__vector_24+0x2a>
+  c6:	80 37       	cpi	r24, 0x70	; 112
+  c8:	81 f0       	breq	.+32     	; 0xea <__vector_24+0x40>
+  ca:	80 38       	cpi	r24, 0x80	; 128
+  cc:	a1 f0       	breq	.+40     	; 0xf6 <__vector_24+0x4c>
+  ce:	80 36       	cpi	r24, 0x60	; 96
+  d0:	61 f5       	brne	.+88     	; 0x12a <__vector_24+0x80>
+  d2:	0b c0       	rjmp	.+22     	; 0xea <__vector_24+0x40>
+  d4:	88 3b       	cpi	r24, 0xB8	; 184
+  d6:	c9 f0       	breq	.+50     	; 0x10a <__vector_24+0x60>
+  d8:	18 f4       	brcc	.+6      	; 0xe0 <__vector_24+0x36>
+  da:	88 3a       	cpi	r24, 0xA8	; 168
+  dc:	b1 f0       	breq	.+44     	; 0x10a <__vector_24+0x60>
+  de:	25 c0       	rjmp	.+74     	; 0x12a <__vector_24+0x80>
+  e0:	80 3c       	cpi	r24, 0xC0	; 192
+  e2:	e9 f0       	breq	.+58     	; 0x11e <__vector_24+0x74>
+  e4:	88 3c       	cpi	r24, 0xC8	; 200
+  e6:	d9 f0       	breq	.+54     	; 0x11e <__vector_24+0x74>
+  e8:	20 c0       	rjmp	.+64     	; 0x12a <__vector_24+0x80>
+		case 0x60: // SLA+W recibido, ACK enviado
+		case 0x70: // SLA+W recibido en modo general, ACK enviado
+		TWCR |= (1 << TWINT); // Borra el flag TWINT para continuar
+  ea:	ec eb       	ldi	r30, 0xBC	; 188
+  ec:	f0 e0       	ldi	r31, 0x00	; 0
+  ee:	80 81       	ld	r24, Z
+  f0:	80 68       	ori	r24, 0x80	; 128
+  f2:	80 83       	st	Z, r24
+		break;
+  f4:	1f c0       	rjmp	.+62     	; 0x134 <__vector_24+0x8a>
+
+		case 0x80: // Datos recibidos, ACK enviado
+		case 0x90: // Datos recibidos en llamada general, ACK enviado
+		dato = TWDR; // Lee el dato recibido del registro de datos
+  f6:	80 91 bb 00 	lds	r24, 0x00BB	; 0x8000bb <__TEXT_REGION_LENGTH__+0x7f80bb>
+  fa:	80 93 04 01 	sts	0x0104, r24	; 0x800104 <dato>
+		TWCR |= (1 << TWINT); // Borra el flag TWINT para continuar
+  fe:	ec eb       	ldi	r30, 0xBC	; 188
+ 100:	f0 e0       	ldi	r31, 0x00	; 0
+ 102:	80 81       	ld	r24, Z
+ 104:	80 68       	ori	r24, 0x80	; 128
+ 106:	80 83       	st	Z, r24
+		break;
+ 108:	15 c0       	rjmp	.+42     	; 0x134 <__vector_24+0x8a>
+
+		case 0xA8: // SLA+R recibido, ACK enviado
+		case 0xB8: // Dato transmitido y ACK recibido
+		TWDR = CONTADOR; // Carga el valor del contador en el registro de datos
+ 10a:	80 91 05 01 	lds	r24, 0x0105	; 0x800105 <CONTADOR>
+ 10e:	80 93 bb 00 	sts	0x00BB, r24	; 0x8000bb <__TEXT_REGION_LENGTH__+0x7f80bb>
+		TWCR |= (1 << TWINT) | (1 << TWEA); // Borra el flag TWINT y habilita ACK para el próximo byte
+ 112:	ec eb       	ldi	r30, 0xBC	; 188
+ 114:	f0 e0       	ldi	r31, 0x00	; 0
+ 116:	80 81       	ld	r24, Z
+ 118:	80 6c       	ori	r24, 0xC0	; 192
+ 11a:	80 83       	st	Z, r24
+		break;
+ 11c:	0b c0       	rjmp	.+22     	; 0x134 <__vector_24+0x8a>
+
+		case 0xC0: // Dato transmitido y NACK recibido
+		case 0xC8: // Último dato transmitido y ACK recibido
+		TWCR |= (1 << TWINT) | (1 << TWEA); // Borra el flag TWINT y habilita ACK para el próximo byte
+ 11e:	ec eb       	ldi	r30, 0xBC	; 188
+ 120:	f0 e0       	ldi	r31, 0x00	; 0
+ 122:	80 81       	ld	r24, Z
+ 124:	80 6c       	ori	r24, 0xC0	; 192
+ 126:	80 83       	st	Z, r24
+		break;
+ 128:	05 c0       	rjmp	.+10     	; 0x134 <__vector_24+0x8a>
+
+		default: // Manejo de errores
+		TWCR |= (1 << TWINT) | (1 << TWSTO); // Borra el flag TWINT y envía una condición de STOP
+ 12a:	ec eb       	ldi	r30, 0xBC	; 188
+ 12c:	f0 e0       	ldi	r31, 0x00	; 0
+ 12e:	80 81       	ld	r24, Z
+ 130:	80 69       	ori	r24, 0x90	; 144
+ 132:	80 83       	st	Z, r24
+		break;
+	}
+}
+ 134:	ff 91       	pop	r31
+ 136:	ef 91       	pop	r30
+ 138:	8f 91       	pop	r24
+ 13a:	0f 90       	pop	r0
+ 13c:	0f be       	out	0x3f, r0	; 63
+ 13e:	0f 90       	pop	r0
+ 140:	1f 90       	pop	r1
+ 142:	18 95       	reti
+
+00000144 <initPCint1>:
+
+/**********************************************************************************************************/
+void initPCint1(void) {
+	// INTERRUPCIONES EN LOS BOTONES BUTTON1_PIN, BUTTON2_PIN
+	PCMSK2 |= (1 << PCINT20) | (1 << PCINT22); // HABILITANDO PCINT EN LOS PINES BUTTON1_PIN Y BUTTON2_PIN
+ 144:	ed e6       	ldi	r30, 0x6D	; 109
+ 146:	f0 e0       	ldi	r31, 0x00	; 0
+ 148:	80 81       	ld	r24, Z
+ 14a:	80 65       	ori	r24, 0x50	; 80
+ 14c:	80 83       	st	Z, r24
+	PCICR |= (1 << PCIE2); // HABILITANDO LA ISR PCINT[7:0]
+ 14e:	e8 e6       	ldi	r30, 0x68	; 104
+ 150:	f0 e0       	ldi	r31, 0x00	; 0
+ 152:	80 81       	ld	r24, Z
+ 154:	84 60       	ori	r24, 0x04	; 4
+ 156:	80 83       	st	Z, r24
+ 158:	08 95       	ret
+
+0000015a <initTimer1>:
+}
+
+/**********************************************************************************************************/
+void initTimer1(void) {
+	// Configura Timer1 para generar una interrupción cada 1 ms
+	TCCR1A = 0; // Modo normal
+ 15a:	10 92 80 00 	sts	0x0080, r1	; 0x800080 <__TEXT_REGION_LENGTH__+0x7f8080>
+	TCCR1B = (1 << WGM12) | (1 << CS11); // Modo CTC y prescaler de 8
+ 15e:	8a e0       	ldi	r24, 0x0A	; 10
+ 160:	80 93 81 00 	sts	0x0081, r24	; 0x800081 <__TEXT_REGION_LENGTH__+0x7f8081>
+	OCR1A = 1999; // Valor para 1 ms (16MHz / 8 / 2000)
+ 164:	8f ec       	ldi	r24, 0xCF	; 207
+ 166:	97 e0       	ldi	r25, 0x07	; 7
+ 168:	90 93 89 00 	sts	0x0089, r25	; 0x800089 <__TEXT_REGION_LENGTH__+0x7f8089>
+ 16c:	80 93 88 00 	sts	0x0088, r24	; 0x800088 <__TEXT_REGION_LENGTH__+0x7f8088>
+	TIMSK1 = (1 << OCIE1A); // Habilitar la interrupción de comparación
+ 170:	82 e0       	ldi	r24, 0x02	; 2
+ 172:	80 93 6f 00 	sts	0x006F, r24	; 0x80006f <__TEXT_REGION_LENGTH__+0x7f806f>
+ 176:	08 95       	ret
+
+00000178 <__vector_5>:
+}
+
+/**********************************************************************************************************/
+ISR(PCINT2_vect) {
+ 178:	1f 92       	push	r1
+ 17a:	0f 92       	push	r0
+ 17c:	0f b6       	in	r0, 0x3f	; 63
+ 17e:	0f 92       	push	r0
+ 180:	11 24       	eor	r1, r1
+ 182:	8f 93       	push	r24
+	// Cambia el estado de los botones para manejar el anti-rebote
+	debounce_counter = 1;
+ 184:	81 e0       	ldi	r24, 0x01	; 1
+ 186:	80 93 00 01 	sts	0x0100, r24	; 0x800100 <__DATA_REGION_ORIGIN__>
+}
+ 18a:	8f 91       	pop	r24
+ 18c:	0f 90       	pop	r0
+ 18e:	0f be       	out	0x3f, r0	; 63
+ 190:	0f 90       	pop	r0
+ 192:	1f 90       	pop	r1
+ 194:	18 95       	reti
+
+00000196 <__vector_11>:
+
+/**********************************************************************************************************/
+ISR(TIMER1_COMPA_vect) {
+ 196:	1f 92       	push	r1
+ 198:	0f 92       	push	r0
+ 19a:	0f b6       	in	r0, 0x3f	; 63
+ 19c:	0f 92       	push	r0
+ 19e:	11 24       	eor	r1, r1
+ 1a0:	2f 93       	push	r18
+ 1a2:	8f 93       	push	r24
+ 1a4:	9f 93       	push	r25
+	// Temporizador para manejar anti-rebote
+	if (debounce_counter) {
+ 1a6:	80 91 00 01 	lds	r24, 0x0100	; 0x800100 <__DATA_REGION_ORIGIN__>
+ 1aa:	88 23       	and	r24, r24
+ 1ac:	09 f4       	brne	.+2      	; 0x1b0 <__vector_11+0x1a>
+ 1ae:	4d c0       	rjmp	.+154    	; 0x24a <__vector_11+0xb4>
+		debounce_counter++;
+ 1b0:	80 91 00 01 	lds	r24, 0x0100	; 0x800100 <__DATA_REGION_ORIGIN__>
+ 1b4:	8f 5f       	subi	r24, 0xFF	; 255
+ 1b6:	80 93 00 01 	sts	0x0100, r24	; 0x800100 <__DATA_REGION_ORIGIN__>
+		if (debounce_counter >= 20) { // Esperar 20 ms para estabilización
+ 1ba:	80 91 00 01 	lds	r24, 0x0100	; 0x800100 <__DATA_REGION_ORIGIN__>
+ 1be:	84 31       	cpi	r24, 0x14	; 20
+ 1c0:	08 f4       	brcc	.+2      	; 0x1c4 <__vector_11+0x2e>
+ 1c2:	43 c0       	rjmp	.+134    	; 0x24a <__vector_11+0xb4>
+			debounce_counter = 0;
+ 1c4:	10 92 00 01 	sts	0x0100, r1	; 0x800100 <__DATA_REGION_ORIGIN__>
+
+			// Leer el estado actual de los botones
+			uint8_t button1_current = PIND & (1 << BUTTON1_PIN);
+ 1c8:	99 b1       	in	r25, 0x09	; 9
+			uint8_t button2_current = PIND & (1 << BUTTON2_PIN);
+ 1ca:	89 b1       	in	r24, 0x09	; 9
+ 1cc:	80 74       	andi	r24, 0x40	; 64
+
+			// Verificar el estado del botón 1
+			if (!(button1_current) && button1_state == 0) {
+ 1ce:	29 2f       	mov	r18, r25
+ 1d0:	20 71       	andi	r18, 0x10	; 16
+ 1d2:	94 fd       	sbrc	r25, 4
+ 1d4:	13 c0       	rjmp	.+38     	; 0x1fc <__vector_11+0x66>
+ 1d6:	90 91 02 01 	lds	r25, 0x0102	; 0x800102 <button1_state>
+ 1da:	91 11       	cpse	r25, r1
+ 1dc:	0f c0       	rjmp	.+30     	; 0x1fc <__vector_11+0x66>
+				CONTADOR++; // Incrementa el contador
+ 1de:	90 91 05 01 	lds	r25, 0x0105	; 0x800105 <CONTADOR>
+ 1e2:	9f 5f       	subi	r25, 0xFF	; 255
+ 1e4:	90 93 05 01 	sts	0x0105, r25	; 0x800105 <CONTADOR>
+				if (CONTADOR > 15) {
+ 1e8:	90 91 05 01 	lds	r25, 0x0105	; 0x800105 <CONTADOR>
+ 1ec:	90 31       	cpi	r25, 0x10	; 16
+ 1ee:	18 f0       	brcs	.+6      	; 0x1f6 <__vector_11+0x60>
+					CONTADOR = 15; // Limita el contador a 15 (4 LEDs)
+ 1f0:	9f e0       	ldi	r25, 0x0F	; 15
+ 1f2:	90 93 05 01 	sts	0x0105, r25	; 0x800105 <CONTADOR>
+				}
+				button1_state = 1; // Actualiza el estado del botón 1
+ 1f6:	91 e0       	ldi	r25, 0x01	; 1
+ 1f8:	90 93 02 01 	sts	0x0102, r25	; 0x800102 <button1_state>
+			}
+			if (button1_current) {
+ 1fc:	21 11       	cpse	r18, r1
+				button1_state = 0; // Restablece el estado del botón 1
+ 1fe:	10 92 02 01 	sts	0x0102, r1	; 0x800102 <button1_state>
+			}
+
+			// Verificar el estado del botón 2
+			if (!(button2_current) && button2_state == 0) {
+ 202:	81 11       	cpse	r24, r1
+ 204:	12 c0       	rjmp	.+36     	; 0x22a <__vector_11+0x94>
+ 206:	90 91 01 01 	lds	r25, 0x0101	; 0x800101 <button2_state>
+ 20a:	91 11       	cpse	r25, r1
+ 20c:	0e c0       	rjmp	.+28     	; 0x22a <__vector_11+0x94>
+				CONTADOR--; // Decrementa el contador
+ 20e:	90 91 05 01 	lds	r25, 0x0105	; 0x800105 <CONTADOR>
+ 212:	91 50       	subi	r25, 0x01	; 1
+ 214:	90 93 05 01 	sts	0x0105, r25	; 0x800105 <CONTADOR>
+				if (CONTADOR > 15) {
+ 218:	90 91 05 01 	lds	r25, 0x0105	; 0x800105 <CONTADOR>
+ 21c:	90 31       	cpi	r25, 0x10	; 16
+ 21e:	10 f0       	brcs	.+4      	; 0x224 <__vector_11+0x8e>
+					CONTADOR = 0; // Limita el contador a 0
+ 220:	10 92 05 01 	sts	0x0105, r1	; 0x800105 <CONTADOR>
+				}
+				button2_state = 1; // Actualiza el estado del botón 2
+ 224:	91 e0       	ldi	r25, 0x01	; 1
+ 226:	90 93 01 01 	sts	0x0101, r25	; 0x800101 <button2_state>
+			}
+			if (button2_current) {
+ 22a:	81 11       	cpse	r24, r1
+				button2_state = 0; // Restablece el estado del botón 2
+ 22c:	10 92 01 01 	sts	0x0101, r1	; 0x800101 <button2_state>
+			}
+
+			// Actualizar el puerto solo si el valor del contador ha cambiado
+			if (CONTADOR != last_contador) {
+ 230:	90 91 05 01 	lds	r25, 0x0105	; 0x800105 <CONTADOR>
+ 234:	80 91 03 01 	lds	r24, 0x0103	; 0x800103 <last_contador>
+ 238:	98 17       	cp	r25, r24
+ 23a:	39 f0       	breq	.+14     	; 0x24a <__vector_11+0xb4>
+				PORTC = CONTADOR; // Actualiza el puerto C con el nuevo valor
+ 23c:	80 91 05 01 	lds	r24, 0x0105	; 0x800105 <CONTADOR>
+ 240:	88 b9       	out	0x08, r24	; 8
+				last_contador = CONTADOR; // Actualiza el último valor del contador
+ 242:	80 91 05 01 	lds	r24, 0x0105	; 0x800105 <CONTADOR>
+ 246:	80 93 03 01 	sts	0x0103, r24	; 0x800103 <last_contador>
+			}
+		}
+	}
+}
+ 24a:	9f 91       	pop	r25
+ 24c:	8f 91       	pop	r24
+ 24e:	2f 91       	pop	r18
+ 250:	0f 90       	pop	r0
+ 252:	0f be       	out	0x3f, r0	; 63
+ 254:	0f 90       	pop	r0
+ 256:	1f 90       	pop	r1
+ 258:	18 95       	reti
+
+0000025a <main>:
+
+/**********************************************************************************************************/
+int main(void) {
+	cli(); // DESHABILITAR INTERRUPCIONES
+ 25a:	f8 94       	cli
+
+	// CONFIGURACIÓN DE BOTONES
+	DDRD &= ~((1 << BUTTON1_PIN) | (1 << BUTTON2_PIN)); // PINES BUTTON1_PIN Y BUTTON2_PIN COMO ENTRADAS
+ 25c:	8a b1       	in	r24, 0x0a	; 10
+ 25e:	8f 7a       	andi	r24, 0xAF	; 175
+ 260:	8a b9       	out	0x0a, r24	; 10
+	PORTD |= (1 << BUTTON1_PIN) | (1 << BUTTON2_PIN); // PULLUPS
+ 262:	8b b1       	in	r24, 0x0b	; 11
+ 264:	80 65       	ori	r24, 0x50	; 80
+ 266:	8b b9       	out	0x0b, r24	; 11
+
+	// CONFIGURACIÓN DE LEDS
+	DDRC |= (1 << LED1_PIN) | (1 << LED2_PIN) | (1 << LED3_PIN) | (1 << LED4_PIN); // PONER LED1_PIN, LED2_PIN, LED3_PIN Y LED4_PIN COMO SALIDAS
+ 268:	87 b1       	in	r24, 0x07	; 7
+ 26a:	8f 60       	ori	r24, 0x0F	; 15
+ 26c:	87 b9       	out	0x07, r24	; 7
+	PORTC = 0; // Apagar todos los LEDs
+ 26e:	18 b8       	out	0x08, r1	; 8
+
+	I2C_Slave_Init(SLAVE_ADDR); // Inicializar el módulo I2C en modo esclavo
+ 270:	82 e0       	ldi	r24, 0x02	; 2
+ 272:	0e 94 48 00 	call	0x90	; 0x90 <I2C_Slave_Init>
+	initPCint1(); // Inicializar las interrupciones de pines
+ 276:	0e 94 a2 00 	call	0x144	; 0x144 <initPCint1>
+	initTimer1(); // Inicializar Timer1
+ 27a:	0e 94 ad 00 	call	0x15a	; 0x15a <initTimer1>
+	sei(); // HABILITAR INTERRUPCIONES
+ 27e:	78 94       	sei
+ 280:	ff cf       	rjmp	.-2      	; 0x280 <main+0x26>
+
+00000282 <_exit>:
+ 282:	f8 94       	cli
+
+00000284 <__stop_program>:
+ 284:	ff cf       	rjmp	.-2      	; 0x284 <__stop_program>
